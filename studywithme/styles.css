@@ -11,17 +11,16 @@ body {
 .logo {
     position: absolute;
     top: 10px;
-    left: 20px;
+    left: 10px;
     font-size: 20px;
     font-weight: bold;
     font-family: Arial, sans-serif;
-    color: #28a745; /* Green color */
-    background-color: #fff;
-    padding: 10px 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    color: #28a745;
+    /* background-color: #fff; */
+    padding: 1px 1px;
+    /* border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); */
 }
-
 
 .login-container {
     background: white;
