@@ -1,0 +1,31 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Login</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <div class="logo">
+        <img src="{% static 'images/logo.png' %}" width='99' height='90' alt="Logo">
+    </div>
+
+    <div class="login-container">
+        <h2>Student Login</h2>
+        <form action="{% url 'student_login' %}" method="POST">
+            {% csrf_token %}
+            <div class="input-group">
+                <label for="id_name">{{ form.name.label }}</label>
+                {{ form.name }}
+            </div>
+            <div class="input-group">
+                <label for="id_grade">{{ form.grade.label }}</label>
+                {{ form.grade }}
+            </div>
+            <button type="submit">Let's Read</button>
+        </form>
+    </div>
+</body>
+</html>

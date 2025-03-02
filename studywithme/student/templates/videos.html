@@ -1,0 +1,26 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Gallery</title>
+    <link rel="stylesheet" href="{% static 'css/gallery.css' %}">
+</head>
+<body>
+    <div class="video-container">
+        {% for video in videos %}
+            <div class="video-box">
+                <video controls muted playsinline>
+                    <source src="{{ video.video_file.url }}" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <p>{{ video.title }}</p>
+            </div>
+        {% empty %}
+            <p>No videos available.</p>
+        {% endfor %}
+    </div>
+</body>
+</html>
