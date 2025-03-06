@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="min-h-screen bg-gray-50">
+    {# Header #}
+    <header class="bg-white shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-3">
+                <img src="{% static 'icons/book-open.svg' %}" class="h-8 w-8 text-indigo-600" alt="Book Icon" />
+                <h1 class="text-xl font-bold text-gray-900">Study With Me</h1>
+            </div>
+            
+            <div class="flex items-center space-x-4">
+                <div class="flex items-center space-x-2">
+                    <img src="{% static 'icons/user.svg' %}" class="h-5 w-5 text-gray-500" alt="User Icon" />
+                    <span class="text-sm font-medium text-gray-700">
+                        {{ student.name }} | Grade {{ student.grade }}
+                    </span>
+                </div>
+                
+                <form method="post" action="{% url 'logout' %}" class="inline">
+                    {% csrf_token %}
+                    <button type="submit" class="inline-flex items-center px-3 py-1.5 border border-transparent text-sm font-medium rounded-md text-indigo-700 bg-indigo-100 hover:bg-indigo-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                        <img src="{% static 'icons/log-out.svg' %}" class="h-4 w-4 mr-1.5" alt="Logout Icon" />
+                        Logout
+                    </button>
+                </form>
+            </div>
+        </div>
+    </header>
+
+    {# Main Content #}
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div class="bg-white shadow rounded-lg overflow-hidden">
+            <div class="px-6 py-5 border-b border-gray-200">
+                <div class="flex items-center">
+                    <img src="{% static 'icons/video.svg' %}" class="h-5 w-5 text-indigo-500 mr-2" alt="Video Icon" />
+                    <h2 class="text-lg font-medium text-gray-900">Learning Videos for Grade {{ student.grade }}</h2>
+                </div>
+            </div>
+            
+            <div class="px-6 py-5">
+                {% include "videos.html" with grade=student.grade %}
+            </div>
+        </div>
+    </main>
+</div>
+{% endblock %}

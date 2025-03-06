@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Welcome to Study With Me{% endblock %}
+
+{% block content %}
+<div class="row align-items-center">
+    <div class="col-md-6">
+        <div class="welcome-text">
+            <h1 class="display-4 fw-bold">Welcome to <br>Study With Me</h1>
+            <p class="lead">Access your grade-specific educational videos with just one click.</p>
+            <p>Our platform provides personalized learning experiences based on your grade level.</p>
+            <div class="mt-4">
+                {% if 'student_id' in request.session %}
+                    <a href="{% url 'videos' %}" class="btn btn-primary btn-lg">Go to My Videos</a>
+                {% else %}
+                    <a href="{% url 'login' %}" class="btn btn-primary btn-lg">Login</a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="welcome-image text-center">
+            <img src="{% static 'images/logo.png' %}" alt="Study With Me" class="img-fluid rounded shadow">
+        </div>
+    </div>
+</div>
+
+<div class="row mt-5">
+    <div class="col-md-4">
+        <div class="card feature-card">
+            <div class="card-body text-center">
+                <i class="fas fa-video feature-icon"></i>
+                <h3 class="card-title">Grade-Specific Videos</h3>
+                <p class="card-text">Access videos tailored to your grade level and curriculum.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card feature-card">
+            <div class="card-body text-center">
+                <i class="fas fa-user-graduate feature-icon"></i>
+                <h3 class="card-title">Easy Login</h3>
+                <p class="card-text">Simple login with just your name and grade.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card feature-card">
+            <div class="card-body text-center">
+                <i class="fas fa-mobile-alt feature-icon"></i>
+                <h3 class="card-title">Mobile Friendly</h3>
+                <p class="card-text">Access your educational content on any device.</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
